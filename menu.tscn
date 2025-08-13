@@ -1,0 +1,75 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtfh4gv88hofh"]
+
+[ext_resource type="Script" uid="uid://bubx8gl2mon30" path="res://menu.gd" id="1_lti8b"]
+[ext_resource type="AudioStream" uid="uid://bo720clg4tbcd" path="res://Sonidos/OZZY OSBOURNE - CRAZY TRAIN (LYRICS_LETRA) SUBTITULADA INGLÉS Y ESPAÑOL [IS7FJW7BmRk].mp3" id="2_ouk20"]
+
+[node name="menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lti8b")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 3.0
+offset_right = 1154.0
+offset_bottom = 648.0
+color = Color(0.368627, 0.972549, 0.94902, 1)
+
+[node name="horneritoFigther" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.496
+anchor_right = 0.496
+offset_left = -91.392
+offset_top = 80.0
+offset_right = 93.608
+offset_bottom = 103.0
+grow_horizontal = 2
+text = "HORNERITO FIGHTER 82"
+justification_flags = 171
+
+[node name="play" type="Button" parent="horneritoFigther"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.516
+anchor_top = 9.63
+anchor_right = 0.516
+anchor_bottom = 9.63
+offset_left = -48.46
+offset_top = -16.49
+offset_right = 58.54
+offset_bottom = 18.51
+grow_horizontal = 2
+grow_vertical = 2
+text = "JUGAR"
+
+[node name="exit" type="Button" parent="horneritoFigther"]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 291.0
+offset_right = 148.0
+offset_bottom = 322.0
+text = "SALIR"
+
+[node name="tritones" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.051
+anchor_bottom = 0.086
+offset_left = 1015.0
+offset_top = 599.0
+offset_right = 1074.25
+offset_bottom = 566.272
+text = "TRITON GAMES"
+
+[node name="menuMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_ouk20")
+volume_db = 0.957
+
+[connection signal="pressed" from="horneritoFigther/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="horneritoFigther/exit" to="." method="_on_exit_pressed"]
