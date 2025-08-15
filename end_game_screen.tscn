@@ -17,7 +17,7 @@ offset_right = 1148.0
 offset_bottom = 652.0
 color = Color(0.155126, 0.177977, 0.181887, 1)
 
-[node name="Label" type="Label" parent="."]
+[node name="title_end" type="Label" parent="."]
 layout_mode = 0
 offset_left = 520.0
 offset_top = 152.0
@@ -40,6 +40,14 @@ offset_top = 374.0
 offset_right = 632.0
 offset_bottom = 422.0
 text = "Salir"
+
+[node name="score" type="Label" parent="."]
+layout_mode = 0
+offset_left = 530.0
+offset_top = 214.0
+offset_right = 590.0
+offset_bottom = 237.0
+text = "SCORE: "
 
 [connection signal="pressed" from="retry_button" to="." method="_on_retry_button_pressed"]
 [connection signal="pressed" from="exit_button" to="." method="_on_exit_button_pressed"]

@@ -6,6 +6,10 @@ class_name EnemyBase
 @export var speed: float = 300.0
 @export var target_path: NodePath = ^"../Player"  # editable desde el editor
 
+signal died(point: int)
+
+@export var points: int = 100
+
 var hp: int
 var target: Node2D
 
@@ -33,6 +37,7 @@ func apply_damage(amount: int, from: Node) -> void:
 
 func die(from: Node) -> void:
 	on_die(from)  # hook
+	died.emit(points) 
 	queue_free()
 
 # ---------- Hooks para sobreescribir en clases hijas ----------
