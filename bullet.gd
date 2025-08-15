@@ -1,13 +1,22 @@
+# bullet.gd (la bala ES un Area2D)
 extends Area2D
 
-@export var velocidad = 500
-@onready var recorrido_max = 1000
-@onready var distancia = 0
+@export var speed := 100
+@export var damage := 10
+var direction := Vector2.UP
 
+func _ready() -> void:
+	# Asegurate de que Collision > Monitoring esté activo y layers/masks bien seteados
+	area_entered.connect(_on_area_entered)
 
 func _physics_process(delta: float) -> void:
-	var direction = Vector2.UP.rotated(rotation)  # Dirección hacia arriba con rotación
-	position += direction * velocidad * delta  # Mover el objeto en la dirección calculada
-	distancia += velocidad * delta  # Incrementar la distancia recorrida
-	if distancia >= recorrido_max:
-		queue_free()  # Eliminar el objeto cuando alcance el recorrido máximo
+	global_position += direction * speed * delta
+
+func _on_area_entered(area: Area2D) -> void:
+	if area.is_in_group("hurtbox"):
+		var enemy := area.get_parent()
+		if enemy and enemy.has_method("apply_damage"):
+			enemy.apply_damage(damage, self)
+		# Evitar múltiples impactos en el mismo frame
+		set_deferred("monitoring", false)
+		queue_free()

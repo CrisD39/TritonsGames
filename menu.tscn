@@ -69,7 +69,7 @@ text = "TRITON GAMES"
 
 [node name="menuMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_ouk20")
-volume_db = 0.957
+volume_db = -9.477
 
 [connection signal="pressed" from="horneritoFigther/play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="horneritoFigther/exit" to="." method="_on_exit_pressed"]
