@@ -1,23 +1,49 @@
-# enemy_a.gd
-
+# enemy_base.gd
 extends CharacterBody2D
+class_name EnemyBase
 
-@export var max_hp := 50
-var hp := max_hp
+@export var max_hp: int = 50
+@export var speed: float = 300.0
+@export var target_path: NodePath = ^"../Player"  # editable desde el editor
 
-@onready var speed = 300
+var hp: int
 var target: Node2D
 
 func _ready() -> void:
-	target = get_parent().get_node("Player") # Ajusta el nombre si es distinto
+	hp = max_hp
+	if not target and target_path != NodePath():
+		var n := get_node_or_null(target_path)
+		if n is Node2D:
+			target = n
+	_on_ready() # hook opcional para hijos
 
 func _physics_process(delta: float) -> void:
 	if target:
-		var direction: Vector2 = target.global_position - global_position
-		velocity = direction.normalized() * speed
+		var dir: Vector2 = (target.global_position - global_position).normalized()
+		velocity = dir * speed
 		move_and_slide()
-		
+	_on_physics_process(delta) # hook opcional para hijos
+
 func apply_damage(amount: int, from: Node) -> void:
 	hp -= amount
 	if hp <= 0:
-		queue_free()  # o anim de muerte
+		die(from)
+	else:
+		on_hurt(amount, from)  # hook
+
+func die(from: Node) -> void:
+	on_die(from)  # hook
+	queue_free()
+
+# ---------- Hooks para sobreescribir en clases hijas ----------
+func _on_ready() -> void:
+	pass
+
+func _on_physics_process(delta: float) -> void:
+	pass
+
+func on_hurt(amount: int, from: Node) -> void:
+	pass
+
+func on_die(from: Node) -> void:
+	pass
