@@ -22,3 +22,21 @@ func disparar():
 #func _process(delta):
 #	if Input.is_action_just_pressed("disparar"):
 #		disparar()
+
+@onready var anim = $AnimatedSprite2D
+@onready var postCombustion = $CPUParticles2D
+
+func _process(delta):
+	if Input.is_action_pressed("ui_right"):
+		anim.animation = "turn_right"
+		anim.frame = 1  # El fotograma que querés mantener
+		anim.pause()  # Pausa en ese fram
+		
+	if Input.is_action_pressed("ui_left"):
+		anim.animation = "turn_left"
+		anim.frame = 1  # El fotograma que querés mantener
+		anim.pause()  # Pausa en ese frame
+		
+	if Input.is_action_just_released("ui_right") or Input.is_action_just_released("ui_left"):
+		anim.animation = "idle"
+		anim.play()
