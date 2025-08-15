@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://dwerj86oqqeqk"]
 
-[ext_resource type="Shader" path="res://borrarFondoBlanco.gdshader" id="1_y6xue"]
+[ext_resource type="Shader" uid="uid://b14s8v358avk1" path="res://borrarFondoBlanco.gdshader" id="1_y6xue"]
 [ext_resource type="Texture2D" uid="uid://bmmjeatypbf0g" path="res://AlliedFighters.PNG" id="2_f6cb0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xg6di"]

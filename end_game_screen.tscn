@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3gbe767fmfyn"]
+
+[ext_resource type="Script" uid="uid://bfyutdo2eum4w" path="res://end_game_screen.gd" id="1_eg3hn"]
+
+[node name="end_game_screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eg3hn")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1148.0
+offset_bottom = 652.0
+color = Color(0.155126, 0.177977, 0.181887, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 520.0
+offset_top = 152.0
+offset_right = 619.0
+offset_bottom = 189.0
+text = "Te moriste"
+
+[node name="retry_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 484.0
+offset_top = 282.0
+offset_right = 639.0
+offset_bottom = 343.0
+text = "REINTENTAR"
+
+[node name="exit_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 489.0
+offset_top = 374.0
+offset_right = 632.0
+offset_bottom = 422.0
+text = "Salir"
+
+[connection signal="pressed" from="retry_button" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="exit_button" to="." method="_on_exit_button_pressed"]

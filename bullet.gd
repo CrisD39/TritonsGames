@@ -3,6 +3,7 @@ extends Area2D
 
 @export var speed := 100
 @export var damage := 10
+
 var direction := Vector2.UP
 
 func _ready() -> void:

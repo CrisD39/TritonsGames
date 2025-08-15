@@ -1,8 +1,8 @@
 [gd_scene load_steps=15 format=3 uid="uid://c5oevoqnmtplk"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="Script" uid="uid://u4tgoivo13uu" path="res://player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://ddupt4g0134ha" path="res://Particles/muzzle_04.png" id="2_nsgij"]
-[ext_resource type="Shader" path="res://player.gdshader" id="2_r68bk"]
+[ext_resource type="Shader" uid="uid://cgsrg275qdwl4" path="res://player.gdshader" id="2_r68bk"]
 [ext_resource type="Texture2D" uid="uid://bmmjeatypbf0g" path="res://AlliedFighters.PNG" id="3_kvkaj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rpdrb"]
@@ -100,15 +100,14 @@ script = ExtResource("1_onrkg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, -1)
-scale = Vector2(1, 1)
 shape = SubResource("CapsuleShape2D_rpdrb")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2(2, 39)
 scale = Vector2(0.1, 0.1)
 amount = 6
-lifetime = 0.1
 texture = ExtResource("2_nsgij")
+lifetime = 0.1
 scale_amount_min = 0.1
 scale_amount_max = 0.1
 
@@ -117,3 +116,12 @@ material = SubResource("ShaderMaterial_tk717")
 sprite_frames = SubResource("SpriteFrames_k65oj")
 animation = &"turn_left"
 frame_progress = 0.369813
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2, -1)
+shape = SubResource("CapsuleShape2D_rpdrb")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

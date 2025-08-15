@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var speed = 300
-@export var life = 3
+@export var life = 1
 
 signal die
 
@@ -26,6 +26,14 @@ func disparar():
 @onready var anim = $AnimatedSprite2D
 @onready var postCombustion = $CPUParticles2D
 
+
+func receive_damage():
+	life-=1
+	print(life)
+	if(life== 0):
+		die.emit()
+
+
 func _process(delta):
 	if Input.is_action_pressed("ui_right"):
 		anim.animation = "turn_right"
@@ -40,3 +48,12 @@ func _process(delta):
 	if Input.is_action_just_released("ui_right") or Input.is_action_just_released("ui_left"):
 		anim.animation = "idle"
 		anim.play()
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	print("hola")
+	receive_damage()
+	if area.is_in_group("hurtbox"): #por ahi tendria que ser enemigo pero es lo mismo fue
+		var enemy := area.get_parent()
+		if enemy and enemy.has_method("die"):
+			enemy.die(self)
