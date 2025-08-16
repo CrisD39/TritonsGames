@@ -37,6 +37,7 @@ size = Vector2(44, 19)
 [node name="enemy_plane_2" type="CharacterBody2D" groups=["hurtbox"]]
 rotation = 3.14159
 script = ExtResource("1_g4gjh")
+max_hp = 10
 speed = 300.0
 points = 200
 metadata/_custom_type_script = "uid://1b0xkv27moco"

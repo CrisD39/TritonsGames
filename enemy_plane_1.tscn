@@ -37,6 +37,7 @@ size = Vector2(57, 26)
 [node name="enemy_plane_1" type="CharacterBody2D" groups=["hurtbox"]]
 rotation = 3.14159
 script = ExtResource("1_w5552")
+max_hp = 100
 metadata/_custom_type_script = "uid://1b0xkv27moco"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemy"]]
