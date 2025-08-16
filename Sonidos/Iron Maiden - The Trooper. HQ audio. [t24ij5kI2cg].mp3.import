@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://7qrwrw08whi1"
+path="res://.godot/imported/Iron Maiden - The Trooper. HQ audio. [t24ij5kI2cg].mp3-a1e418565a9e0a618bc63ae7ccff99aa.mp3str"
+
+[deps]
+
+source_file="res://Sonidos/Iron Maiden - The Trooper. HQ audio. [t24ij5kI2cg].mp3"
+dest_files=["res://.godot/imported/Iron Maiden - The Trooper. HQ audio. [t24ij5kI2cg].mp3-a1e418565a9e0a618bc63ae7ccff99aa.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -89,7 +89,6 @@ animations = [{
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.25, 3.25)
-scale = Vector2(1, 1)
 shape = SubResource("CapsuleShape2D_xg6di")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
