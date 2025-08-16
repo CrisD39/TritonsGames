@@ -4,6 +4,7 @@ extends Node2D
 func _ready():
 	await get_tree().process_frame
 	$Player.die.connect(end_game)
+	$Player.misil.connect(dispararMisil)
 	crear_nueva_ola()
 	
 func end_game():
@@ -29,10 +30,9 @@ func invocar_enemigo(pos: Vector2):
 	var instancia_enemigo = ENEMIGO.instantiate()
 	instancia_enemigo.died.connect(_on_enemy_died)
 	instancia_enemigo.global_position = pos
-	instancia_enemigo.target = $Player
+	#instancia_enemigo.target = $Player
 	$Enemigos.add_child(instancia_enemigo)
 	print("se creo enemigo")
-	
 	
 func check_fin_ola() -> bool:
 	if($Enemigos.get_children().size() == 1):
@@ -41,3 +41,9 @@ func check_fin_ola() -> bool:
 		$Timer.start()
 		return true
 	return false
+
+func dispararMisil():
+	var array_target = $Enemigos.get_children()
+	if($Enemigos.get_children().size() != 0):
+		var target = array_target.pick_random()
+		$Player.disparar_misil(target)

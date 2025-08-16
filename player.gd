@@ -4,10 +4,15 @@ var speed = 300
 @export var life = 1
 
 signal die
+signal misil
 
 func _physics_process(delta: float) -> void:
 	if (Input.is_action_just_pressed("disparar")):
 		disparar()
+	
+	if (Input.is_action_just_pressed("dispararMisil")):
+		misil.emit()
+	
 	var direction = Input.get_vector("ui_left","ui_right","ui_up","ui_down")
 	velocity = direction*speed
 	move_and_slide()
@@ -18,6 +23,13 @@ func disparar():
 	disparo.global_position = global_position
 	get_parent().add_child(disparo)
 
+func disparar_misil(tar: Node2D):
+	const  MISIL = preload("res://missile.tscn")
+	var disparo = MISIL.instantiate()
+	disparo.global_position = global_position
+	disparo.target = tar
+	get_parent().add_child(disparo)
+	
 #otra forma de ver acción por refresco
 #func _process(delta):
 #	if Input.is_action_just_pressed("disparar"):

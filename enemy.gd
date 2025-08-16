@@ -26,6 +26,11 @@ func _physics_process(delta: float) -> void:
 		var dir: Vector2 = (target.global_position - global_position).normalized()
 		velocity = dir * speed
 		move_and_slide()
+	else:
+		var dir: Vector2 = Vector2.DOWN.normalized()
+		velocity = dir * speed
+		move_and_slide()
+		
 	_on_physics_process(delta) # hook opcional para hijos
 
 func apply_damage(amount: int, from: Node) -> void:
