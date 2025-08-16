@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://djhjtbnavi66d"]
+[gd_scene load_steps=10 format=3 uid="uid://djhjtbnavi66d"]
 
 [ext_resource type="Script" uid="uid://bwvkuin5f4n80" path="res://enemy_plane_1.gd" id="1_w5552"]
 [ext_resource type="Shader" uid="uid://b14s8v358avk1" path="res://borrarFondoBlanco.gdshader" id="2_ii2wv"]
 [ext_resource type="Texture2D" uid="uid://b6qpcc1eyvxvn" path="res://Assets/Aircraft Sprites/Multiple Views/MiG-51S copy.PNG" id="3_v4x5f"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ii2wv"]
-size = Vector2(58, 97)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ii2wv"]
+radius = 29.0
+height = 98.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6epgo"]
 shader = ExtResource("2_ii2wv")
@@ -28,17 +29,20 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uj8wr"]
-radius = 29.0
+radius = 10.0
 height = 98.0
 
-[node name="enemy_plane1" type="CharacterBody2D" groups=["hurtbox"]]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v4x5f"]
+size = Vector2(57, 26)
+
+[node name="enemy_plane_1" type="CharacterBody2D" groups=["hurtbox"]]
 rotation = 3.14159
 script = ExtResource("1_w5552")
 metadata/_custom_type_script = "uid://1b0xkv27moco"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemy"]]
 position = Vector2(0, -11)
-shape = SubResource("RectangleShape2D_ii2wv")
+shape = SubResource("CapsuleShape2D_ii2wv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_6epgo")
@@ -50,3 +54,7 @@ collision_layer = 9
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, -12)
 shape = SubResource("CapsuleShape2D_uj8wr")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(5.36442e-07, 6)
+shape = SubResource("RectangleShape2D_v4x5f")

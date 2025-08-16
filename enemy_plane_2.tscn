@@ -1,0 +1,60 @@
+[gd_scene load_steps=10 format=3 uid="uid://c8cd2rlci611j"]
+
+[ext_resource type="Script" uid="uid://5o602spqdsxi" path="res://enemy_plane_2.gd" id="1_g4gjh"]
+[ext_resource type="Shader" uid="uid://b14s8v358avk1" path="res://borrarFondoBlanco.gdshader" id="2_g4gjh"]
+[ext_resource type="Texture2D" uid="uid://wcwatxjkoa85" path="res://Assets/Aircraft Sprites/Multiple Views/AlliedFighters.PNG" id="3_3vnnh"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_31426"]
+radius = 20.0
+height = 62.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a26pk"]
+shader = ExtResource("2_g4gjh")
+shader_parameter/key_color = Color(1, 1, 1, 1)
+shader_parameter/tolerance = 0.1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6pse"]
+atlas = ExtResource("3_3vnnh")
+region = Rect2(0, 320, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ridx0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6pse")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_myk8d"]
+height = 62.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e3wbf"]
+size = Vector2(44, 19)
+
+[node name="enemy_plane_2" type="CharacterBody2D" groups=["hurtbox"]]
+rotation = 3.14159
+script = ExtResource("1_g4gjh")
+speed = 300.0
+points = 200
+metadata/_custom_type_script = "uid://1b0xkv27moco"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemy"]]
+shape = SubResource("CapsuleShape2D_31426")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_a26pk")
+sprite_frames = SubResource("SpriteFrames_ridx0")
+animation = &"idle"
+
+[node name="Hurtbox" type="Area2D" parent="." groups=["hurtbox"]]
+collision_layer = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CapsuleShape2D_myk8d")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(1, 13.5)
+shape = SubResource("RectangleShape2D_e3wbf")

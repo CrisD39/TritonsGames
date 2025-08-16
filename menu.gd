@@ -4,7 +4,6 @@ extends Control
 
 func _ready() -> void:
 	# Inicia la música cuando se cargue la escena
-	print("hola")
 	menu_music.play()# Reproduce la música
 		
 func _on_play_pressed() -> void:

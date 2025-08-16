@@ -23,12 +23,18 @@ func disparar():
 	disparo.global_position = global_position
 	get_parent().add_child(disparo)
 
+var misilKey: bool = true
 func disparar_misil(tar: Node2D):
-	const  MISIL = preload("res://missile.tscn")
-	var disparo = MISIL.instantiate()
-	disparo.global_position = global_position
-	disparo.target = tar
-	get_parent().add_child(disparo)
+	if misilKey:
+		const  MISIL = preload("res://missile.tscn")
+		var disparo = MISIL.instantiate()
+		disparo.global_position = global_position
+		disparo.target = tar
+		get_parent().add_child(disparo)
+		if get_tree(): 
+			misilKey = false
+			await get_tree().create_timer(5).timeout
+			misilKey = true
 	
 #otra forma de ver acción por refresco
 #func _process(delta):
@@ -38,13 +44,11 @@ func disparar_misil(tar: Node2D):
 @onready var anim = $AnimatedSprite2D
 @onready var postCombustion = $CPUParticles2D
 
-
 func receive_damage():
 	life-=1
 	print(life)
 	if(life== 0):
 		die.emit()
-
 
 func _process(delta):
 	if Input.is_action_pressed("ui_right"):

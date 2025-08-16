@@ -26,8 +26,17 @@ func crear_nueva_ola():
 		$Timer.start()
 		
 func invocar_enemigo(pos: Vector2):
-	const ENEMIGO = preload("res://enemy_plane_1.tscn")
-	var instancia_enemigo = ENEMIGO.instantiate()
+	var array_rand = [1,2,3]
+	var rand = array_rand.pick_random()
+	var instancia_enemigo
+	if rand == 1:
+		instancia_enemigo = preload("res://enemy_plane_1.tscn").instantiate()
+	if rand == 2:
+		instancia_enemigo = preload("res://enemy_plane_2.tscn").instantiate()
+	if rand == 3:
+		instancia_enemigo = preload("res://enemy_plane_3.tscn").instantiate()
+		instancia_enemigo.target = $Player
+	
 	instancia_enemigo.died.connect(_on_enemy_died)
 	instancia_enemigo.global_position = pos
 	#instancia_enemigo.target = $Player

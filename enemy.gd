@@ -25,6 +25,8 @@ func _physics_process(delta: float) -> void:
 	if target:
 		var dir: Vector2 = (target.global_position - global_position).normalized()
 		velocity = dir * speed
+		look_at(dir)
+		rotation = dir.angle() + 45
 		move_and_slide()
 	else:
 		var dir: Vector2 = Vector2.DOWN.normalized()
