@@ -59,16 +59,17 @@ stream = ExtResource("2_ouk20")
 volume_db = -18.391
 
 [node name="play" type="Button" parent="."]
+z_index = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.516
 anchor_top = 9.63
 anchor_right = 0.516
 anchor_bottom = 9.63
-offset_left = -498.432
-offset_top = -5949.24
-offset_right = -205.432
-offset_bottom = -5887.24
+offset_left = -574.432
+offset_top = -5990.24
+offset_right = -281.432
+offset_bottom = -5928.24
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_hover_pressed_color = Color(0.300337, 0.846511, 0.850121, 1)
@@ -77,27 +78,30 @@ theme_override_font_sizes/font_size = 46
 text = "JUGAR"
 
 [node name="exit" type="Button" parent="."]
+z_index = 1
 layout_mode = 0
-offset_left = 169.0
-offset_top = 393.0
-offset_right = 308.0
-offset_bottom = 438.0
+offset_left = 22.0
+offset_top = 350.0
+offset_right = 161.0
+offset_bottom = 395.0
 theme_override_fonts/font = ExtResource("2_mae5d")
 theme_override_font_sizes/font_size = 28
 text = "SALIR"
 
 [node name="hornero" type="Sprite2D" parent="."]
-z_index = 1
+z_index = 2
 position = Vector2(1027, 533)
 scale = Vector2(0.632, 0.613)
 texture = ExtResource("4_ytr4m")
 
 [node name="avion" type="Sprite2D" parent="."]
+z_index = 1
 position = Vector2(831, 377)
 scale = Vector2(1.308, 1.266)
 texture = ExtResource("5_l48gv")
 
 [node name="Button_hornero" type="Button" parent="."]
+z_index = 1
 layout_mode = 0
 offset_left = 883.0
 offset_top = 403.0
@@ -110,7 +114,16 @@ flat = true
 
 [node name="sonido_hornero" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_l48gv")
-volume_db = -19.995
+volume_db = -12.071
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+process_priority = -2
+layout_mode = 0
+offset_left = -8.0
+offset_top = 207.0
+offset_right = 1155.0
+offset_bottom = 433.0
+mouse_filter = 2
 
 [connection signal="pressed" from="play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]

@@ -7,6 +7,7 @@ func _ready():
 	$Player.die.connect(end_game)
 	$Player.misil.connect(dispararMisil)
 	crear_nueva_ola()
+	$music_game.play()
 	
 func end_game():
 	get_tree().change_scene_to_file("res://end_game_screen.tscn")

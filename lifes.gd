@@ -49,7 +49,6 @@ func _build_hearts() -> void:
 
 func _refresh() -> void:
 	# Muestra solo 'health' corazones, el resto se oculta
-	print("hola")
 	var idx := 0
 	for child in get_children():
 		if child == heart_template:
