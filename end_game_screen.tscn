@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c3gbe767fmfyn"]
+[gd_scene load_steps=3 format=3 uid="uid://c3gbe767fmfyn"]
 
 [ext_resource type="Script" uid="uid://bfyutdo2eum4w" path="res://end_game_screen.gd" id="1_eg3hn"]
+[ext_resource type="AudioStream" uid="uid://7qrwrw08whi1" path="res://Sonidos/Iron Maiden - The Trooper. HQ audio. [t24ij5kI2cg].mp3" id="2_qxwmb"]
 
 [node name="end_game_screen" type="Control"]
 layout_mode = 3
@@ -48,6 +49,10 @@ offset_top = 214.0
 offset_right = 590.0
 offset_bottom = 237.0
 text = "SCORE: "
+
+[node name="end_game_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_qxwmb")
+volume_db = -24.36
 
 [connection signal="pressed" from="retry_button" to="." method="_on_retry_button_pressed"]
 [connection signal="pressed" from="exit_button" to="." method="_on_exit_button_pressed"]
