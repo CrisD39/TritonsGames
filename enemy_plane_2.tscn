@@ -1,8 +1,21 @@
-[gd_scene load_steps=10 format=3 uid="uid://c8cd2rlci611j"]
+[gd_scene load_steps=23 format=3 uid="uid://c8cd2rlci611j"]
 
 [ext_resource type="Script" uid="uid://5o602spqdsxi" path="res://enemy_plane_2.gd" id="1_g4gjh"]
 [ext_resource type="Shader" uid="uid://b14s8v358avk1" path="res://borrarFondoBlanco.gdshader" id="2_g4gjh"]
 [ext_resource type="Texture2D" uid="uid://wcwatxjkoa85" path="res://Assets/Aircraft Sprites/Multiple Views/AlliedFighters.PNG" id="3_3vnnh"]
+[ext_resource type="Texture2D" uid="uid://cbibck4k7vdg2" path="res://Particles/scorch_01.png" id="4_r5w54"]
+[ext_resource type="Texture2D" uid="uid://ckg75vado3ypd" path="res://Particles/scorch_02.png" id="5_fogst"]
+[ext_resource type="Texture2D" uid="uid://bnmtmpki1fnhs" path="res://Particles/scorch_03.png" id="6_s2kdf"]
+[ext_resource type="Texture2D" uid="uid://bb0ax8lg2psy3" path="res://Particles/smoke_01.png" id="7_vgupc"]
+[ext_resource type="Texture2D" uid="uid://b8lbwhtp33v67" path="res://Particles/smoke_02.png" id="8_0an7m"]
+[ext_resource type="Texture2D" uid="uid://bld8e5ie4emj4" path="res://Particles/smoke_03.png" id="9_v4g6b"]
+[ext_resource type="Texture2D" uid="uid://cgf0p8ehq61jw" path="res://Particles/smoke_04.png" id="10_pffr1"]
+[ext_resource type="Texture2D" uid="uid://bncw4iwa5dkmd" path="res://Particles/smoke_05.png" id="11_ncblo"]
+[ext_resource type="Texture2D" uid="uid://donsfp58gliwu" path="res://Particles/smoke_06.png" id="12_3e8l4"]
+[ext_resource type="Texture2D" uid="uid://dxr2jniixrmoh" path="res://Particles/smoke_07.png" id="13_t4dl4"]
+[ext_resource type="Texture2D" uid="uid://ladwqoa33rbo" path="res://Particles/smoke_08.png" id="14_2e8ea"]
+[ext_resource type="Texture2D" uid="uid://cpcq173dajhg1" path="res://Particles/smoke_09.png" id="15_outx3"]
+[ext_resource type="AudioStream" uid="uid://cn6rbugb7ul1d" path="res://Sonidos/explosion.wav" id="16_m48xb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_31426"]
 radius = 20.0
@@ -26,6 +39,47 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_r5w54")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_fogst")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_s2kdf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_vgupc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_0an7m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_v4g6b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_pffr1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ncblo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_3e8l4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_t4dl4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_2e8ea")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_outx3")
+}],
+"loop": true,
+"name": &"morir",
+"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_myk8d"]
@@ -36,6 +90,7 @@ size = Vector2(44, 19)
 
 [node name="enemy_plane_2" type="CharacterBody2D" groups=["hurtbox"]]
 rotation = 3.14159
+collision_mask = 65
 script = ExtResource("1_g4gjh")
 max_hp = 10
 speed = 300.0
@@ -59,3 +114,6 @@ shape = SubResource("CapsuleShape2D_myk8d")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(1, 13.5)
 shape = SubResource("RectangleShape2D_e3wbf")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_m48xb")

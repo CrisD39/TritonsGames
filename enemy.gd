@@ -32,6 +32,10 @@ func _physics_process(delta: float) -> void:
 		var dir: Vector2 = Vector2.DOWN.normalized()
 		velocity = dir * speed
 		move_and_slide()
+	
+	print(global_position.y)
+	if(global_position.y > 750):
+		queue_free()
 		
 	_on_physics_process(delta) # hook opcional para hijos
 
@@ -45,7 +49,7 @@ func apply_damage(amount: int, from: Node) -> void:
 func die(from: Node) -> void:
 	on_die(from)  # hook
 	died.emit(points) 
-	#queue_free()
+
 
 # ---------- Hooks para sobreescribir en clases hijas ----------
 func _on_ready() -> void:
