@@ -9,7 +9,7 @@ size = Vector2(124, 122)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_duvxt"]
 size = Vector2(127, 126)
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" groups=["hurtbox"]]
 script = ExtResource("1_0st7t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemy"]]

@@ -1,7 +1,52 @@
-[gd_scene load_steps=2 format=3 uid="uid://bemme4wo8x4xs"]
+[gd_scene load_steps=9 format=3 uid="uid://djhjtbnavi66d"]
 
 [ext_resource type="Script" uid="uid://bwvkuin5f4n80" path="res://enemy_plane_1.gd" id="1_w5552"]
+[ext_resource type="Shader" uid="uid://b14s8v358avk1" path="res://borrarFondoBlanco.gdshader" id="2_ii2wv"]
+[ext_resource type="Texture2D" uid="uid://b6qpcc1eyvxvn" path="res://Assets/Aircraft Sprites/Multiple Views/MiG-51S copy.PNG" id="3_v4x5f"]
 
-[node name="enemy_plane1" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ii2wv"]
+size = Vector2(58, 97)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6epgo"]
+shader = ExtResource("2_ii2wv")
+shader_parameter/key_color = Color(1, 1, 1, 1)
+shader_parameter/tolerance = 0.1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pn12l"]
+atlas = ExtResource("3_v4x5f")
+region = Rect2(0, 0, 63, 122)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_egfnn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pn12l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uj8wr"]
+radius = 29.0
+height = 98.0
+
+[node name="enemy_plane1" type="CharacterBody2D" groups=["hurtbox"]]
+rotation = 3.14159
 script = ExtResource("1_w5552")
 metadata/_custom_type_script = "uid://1b0xkv27moco"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemy"]]
+position = Vector2(0, -11)
+shape = SubResource("RectangleShape2D_ii2wv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_6epgo")
+sprite_frames = SubResource("SpriteFrames_egfnn")
+
+[node name="Hurtbox" type="Area2D" parent="." groups=["hurtbox"]]
+collision_layer = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -12)
+shape = SubResource("CapsuleShape2D_uj8wr")

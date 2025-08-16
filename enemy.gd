@@ -3,7 +3,7 @@ extends CharacterBody2D
 class_name EnemyBase
 
 @export var max_hp: int = 50
-@export var speed: float = 300.0
+@export var speed: float = 100.0
 @export var target_path: NodePath = ^"../Player"  # editable desde el editor
 
 signal died(point: int)

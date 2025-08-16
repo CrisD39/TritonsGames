@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 Global="*res://global.gd"
 
+[global_group]
+
+hurtbox=""
+enemy=""
+
 [input]
 
 ui_left={

@@ -51,7 +51,6 @@ func _process(delta):
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	print("hola")
 	receive_damage()
 	if area.is_in_group("hurtbox"): #por ahi tendria que ser enemigo pero es lo mismo fue
 		var enemy := area.get_parent()
