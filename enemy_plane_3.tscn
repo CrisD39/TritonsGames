@@ -1,0 +1,61 @@
+[gd_scene load_steps=10 format=3 uid="uid://qnlpddj5q23w"]
+
+[ext_resource type="Script" uid="uid://caif6art0ivhi" path="res://enemy_plane_3.gd" id="1_5xdar"]
+[ext_resource type="Shader" uid="uid://b14s8v358avk1" path="res://borrarFondoBlanco.gdshader" id="2_45ebc"]
+[ext_resource type="Texture2D" uid="uid://b73c8qnsbaajw" path="res://Assets/Aircraft Sprites/Multiple Views/Planes1.png" id="3_rsm3w"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pwnpq"]
+shader = ExtResource("2_45ebc")
+shader_parameter/key_color = Color(1, 1, 1, 1)
+shader_parameter/tolerance = 0.1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oav0s"]
+atlas = ExtResource("3_rsm3w")
+region = Rect2(11, 322, 43, 67)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2fntl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oav0s")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5xdar"]
+radius = 17.0
+height = 54.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eku5l"]
+radius = 8.5
+height = 62.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v8s0c"]
+size = Vector2(39, 21)
+
+[node name="enemy_plane_3" type="CharacterBody2D" groups=["hurtbox"]]
+rotation = 3.14159
+script = ExtResource("1_5xdar")
+points = 300
+metadata/_custom_type_script = "uid://1b0xkv27moco"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["enemy"]]
+material = SubResource("ShaderMaterial_pwnpq")
+sprite_frames = SubResource("SpriteFrames_2fntl")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_5xdar")
+
+[node name="Hurtbox" type="Area2D" parent="." groups=["hurtbox"]]
+collision_layer = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-0.5, -2)
+shape = SubResource("CapsuleShape2D_eku5l")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-0.5, 9.5)
+shape = SubResource("RectangleShape2D_v8s0c")

@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var speed := 300
+@export var speed := 400
 @export var damage := 100
 @onready var fuego = $CPUParticles2D
 @onready var sound = $AudioStreamPlayer2D
@@ -28,4 +28,3 @@ func _on_area_entered(area: Area2D) -> void:
 		# Evitar múltiples impactos en el mismo frame
 		set_deferred("monitoring", false)
 		queue_free()
-		
