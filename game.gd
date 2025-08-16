@@ -1,5 +1,6 @@
 extends Node2D
 
+var cantEnemigos = 5
 
 func _ready():
 	await get_tree().process_frame
@@ -8,7 +9,6 @@ func _ready():
 	crear_nueva_ola()
 	
 func end_game():
-	print("se llamo a endgame")
 	get_tree().change_scene_to_file("res://end_game_screen.tscn")
 
 
@@ -18,7 +18,7 @@ func _on_enemy_died(points: int) -> void:
 
 func crear_nueva_ola():
 	var array_puntos = $spawn.get_children()
-	for i in range(1,3):
+	for i in range(1,cantEnemigos):
 		var random_pos = array_puntos.pick_random().global_position
 		invocar_enemigo(random_pos)
 		if get_tree(): 
@@ -39,7 +39,6 @@ func invocar_enemigo(pos: Vector2):
 	
 	instancia_enemigo.died.connect(_on_enemy_died)
 	instancia_enemigo.global_position = pos
-	#instancia_enemigo.target = $Player
 	$Enemigos.add_child(instancia_enemigo)
 	
 func check_fin_ola() -> bool:
