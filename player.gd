@@ -1,10 +1,11 @@
 extends CharacterBody2D
 
 var speed = 400
-@export var life = 1
+
 
 signal die
 signal misil
+signal damage
 
 func _physics_process(delta: float) -> void:
 	if (Input.is_action_just_pressed("disparar")):
@@ -45,9 +46,8 @@ func disparar_misil(tar: Node2D):
 @onready var postCombustion = $CPUParticles2D
 
 func receive_damage():
-	life-=1
-	print(life)
-	if(life== 0):
+	Global.damage_done()
+	if(Global.vida <= 0):
 		die.emit()
 
 func _process(delta):
