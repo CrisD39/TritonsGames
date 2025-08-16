@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://dtfh4gv88hofh"]
+[gd_scene load_steps=8 format=3 uid="uid://dtfh4gv88hofh"]
 
 [ext_resource type="Script" uid="uid://bubx8gl2mon30" path="res://menu.gd" id="1_lti8b"]
+[ext_resource type="FontFile" uid="uid://c0ctvgys28b6k" path="res://Assets/fonts/Bring Race.otf" id="2_mae5d"]
 [ext_resource type="AudioStream" uid="uid://bo720clg4tbcd" path="res://Sonidos/OZZY OSBOURNE - CRAZY TRAIN (LYRICS_LETRA) SUBTITULADA INGLÉS Y ESPAÑOL [IS7FJW7BmRk].mp3" id="2_ouk20"]
+[ext_resource type="Texture2D" uid="uid://b2c41ermpfpxs" path="res://Assets/Background/494d69a2-d0c5-44fd-9dee-4f06a9af99df-removebg-preview.png" id="4_ytr4m"]
+[ext_resource type="Texture2D" uid="uid://cmg52fegpeeka" path="res://Assets/Background/avion .png" id="5_l48gv"]
+[ext_resource type="AudioStream" uid="uid://cujsw3yw5s467" path="res://Sonidos/hornero.mp3" id="6_l48gv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l48gv"]
 
 [node name="menu" type="Control"]
 layout_mode = 3
@@ -18,58 +24,93 @@ offset_left = 2.0
 offset_top = 3.0
 offset_right = 1154.0
 offset_bottom = 648.0
-color = Color(0.368627, 0.972549, 0.94902, 1)
+color = Color(0.194774, 0.645823, 1, 1)
 
 [node name="horneritoFigther" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.496
 anchor_right = 0.496
-offset_left = -91.392
-offset_top = 80.0
-offset_right = 93.608
-offset_bottom = 103.0
+offset_left = -561.392
+offset_top = 65.0
+offset_right = 583.608
+offset_bottom = 145.0
 grow_horizontal = 2
-text = "HORNERITO FIGHTER 82"
+theme_override_fonts/font = ExtResource("2_mae5d")
+theme_override_font_sizes/font_size = 65
+text = "HORNERITO FIGHTER "
 justification_flags = 171
-
-[node name="play" type="Button" parent="horneritoFigther"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.516
-anchor_top = 9.63
-anchor_right = 0.516
-anchor_bottom = 9.63
-offset_left = -48.46
-offset_top = -16.49
-offset_right = 58.54
-offset_bottom = 18.51
-grow_horizontal = 2
-grow_vertical = 2
-text = "JUGAR"
-
-[node name="exit" type="Button" parent="horneritoFigther"]
-layout_mode = 0
-offset_left = 49.0
-offset_top = 291.0
-offset_right = 148.0
-offset_bottom = 322.0
-text = "SALIR"
 
 [node name="tritones" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.051
 anchor_bottom = 0.086
-offset_left = 1015.0
-offset_top = 599.0
-offset_right = 1074.25
-offset_bottom = 566.272
-text = "TRITON GAMES"
+offset_left = 7.0
+offset_top = 613.0
+offset_right = 152.248
+offset_bottom = 592.272
+theme_override_font_sizes/font_size = 25
+text = "TRITON GAMES®"
 
 [node name="menuMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_ouk20")
-volume_db = -9.477
+volume_db = -18.391
 
-[connection signal="pressed" from="horneritoFigther/play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="horneritoFigther/exit" to="." method="_on_exit_pressed"]
+[node name="play" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.516
+anchor_top = 9.63
+anchor_right = 0.516
+anchor_bottom = 9.63
+offset_left = -498.432
+offset_top = -5949.24
+offset_right = -205.432
+offset_bottom = -5887.24
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_hover_pressed_color = Color(0.300337, 0.846511, 0.850121, 1)
+theme_override_fonts/font = ExtResource("2_mae5d")
+theme_override_font_sizes/font_size = 46
+text = "JUGAR"
+
+[node name="exit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 169.0
+offset_top = 393.0
+offset_right = 308.0
+offset_bottom = 438.0
+theme_override_fonts/font = ExtResource("2_mae5d")
+theme_override_font_sizes/font_size = 28
+text = "SALIR"
+
+[node name="hornero" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(1027, 533)
+scale = Vector2(0.632, 0.613)
+texture = ExtResource("4_ytr4m")
+
+[node name="avion" type="Sprite2D" parent="."]
+position = Vector2(831, 377)
+scale = Vector2(1.308, 1.266)
+texture = ExtResource("5_l48gv")
+
+[node name="Button_hornero" type="Button" parent="."]
+layout_mode = 0
+offset_left = 883.0
+offset_top = 403.0
+offset_right = 1156.0
+offset_bottom = 651.0
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 0)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 0)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_l48gv")
+flat = true
+
+[node name="sonido_hornero" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_l48gv")
+volume_db = -19.995
+
+[connection signal="pressed" from="play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Button_hornero" to="." method="_on_button_hornero_pressed"]
