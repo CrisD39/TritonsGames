@@ -3,6 +3,8 @@ extends Control
 func _ready() -> void:
 	$score.text = "score: " + str(Global.score)
 	$end_game_music.play(36)
+	$calaca.play("default")
+	$calaca2.play("default")
 	
 func _on_retry_button_pressed() -> void:
 	Global.reset_score()

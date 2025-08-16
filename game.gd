@@ -10,8 +10,9 @@ func _ready():
 	$music_game.play()
 	
 func end_game():
+	$background._stop()
+	await get_tree().create_timer(2.0).timeout   # espera 2 segundos
 	get_tree().change_scene_to_file("res://end_game_screen.tscn")
-
 
 func _on_enemy_died(points: int) -> void:
 	Global.add_score(points)  # actualiza y dispara score_changed

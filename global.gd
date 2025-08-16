@@ -1,11 +1,12 @@
 extends Node
 
 signal score_changed(new_score: int)
+signal misil_signal(value:bool)
 signal damage_receive
 
 var score: int = 0
 var vida: int = 3
-
+var misilAvailable: bool = true
 
 func reset_score() -> void:
 	score = 0
@@ -22,4 +23,8 @@ func damage_done() -> void:
 func reset_life() -> void:
 	vida = 3
 	damage_receive.emit()
+	
+func _set_misil_available(value:bool) -> void:
+	misilAvailable = value
+	emit_signal("misil_signal",value)
 	
