@@ -19,6 +19,8 @@ func _physics_process(delta: float) -> void:
 		direction = (target.global_position - global_position).normalized()
 		rotation = direction.angle() + 90
 		global_position += direction * speed * delta
+	else:
+		queue_free()
 		
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("hurtbox"):

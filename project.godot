@@ -73,3 +73,4 @@ dispararMisil={
 2d_physics/layer_4="Enemy_Hurtbox"
 2d_physics/layer_5="Projectile"
 2d_physics/layer_6="Limite"
+2d_physics/layer_7="Desaparicion"
