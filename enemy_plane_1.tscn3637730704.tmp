@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://djhjtbnavi66d"]
+[gd_scene load_steps=22 format=3 uid="uid://djhjtbnavi66d"]
 
 [ext_resource type="Script" uid="uid://bwvkuin5f4n80" path="res://enemy_plane_1.gd" id="1_w5552"]
 [ext_resource type="Shader" uid="uid://b14s8v358avk1" path="res://borrarFondoBlanco.gdshader" id="2_ii2wv"]
@@ -15,7 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://dxr2jniixrmoh" path="res://Particles/smoke_07.png" id="13_rcglb"]
 [ext_resource type="Texture2D" uid="uid://ladwqoa33rbo" path="res://Particles/smoke_08.png" id="14_10efv"]
 [ext_resource type="Texture2D" uid="uid://cpcq173dajhg1" path="res://Particles/smoke_09.png" id="15_p828u"]
-[ext_resource type="AudioStream" uid="uid://cn6rbugb7ul1d" path="res://Sonidos/explosion.wav" id="16_rgviw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ii2wv"]
 radius = 29.0
@@ -92,6 +91,9 @@ size = Vector2(57, 26)
 rotation = 3.14159
 script = ExtResource("1_w5552")
 max_hp = 100
+speed = null
+target_path = null
+points = null
 metadata/_custom_type_script = "uid://1b0xkv27moco"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemy"]]
@@ -102,7 +104,7 @@ shape = SubResource("CapsuleShape2D_ii2wv")
 material = SubResource("ShaderMaterial_6epgo")
 scale = Vector2(1.02738, 1.02738)
 sprite_frames = SubResource("SpriteFrames_egfnn")
-animation = &"idle"
+animation = &"morir"
 
 [node name="Hurtbox" type="Area2D" parent="." groups=["hurtbox"]]
 collision_layer = 9
@@ -114,6 +116,3 @@ shape = SubResource("CapsuleShape2D_uj8wr")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(5.36442e-07, 6)
 shape = SubResource("RectangleShape2D_v4x5f")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("16_rgviw")

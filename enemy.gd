@@ -45,7 +45,7 @@ func apply_damage(amount: int, from: Node) -> void:
 func die(from: Node) -> void:
 	on_die(from)  # hook
 	died.emit(points) 
-	queue_free()
+	#queue_free()
 
 # ---------- Hooks para sobreescribir en clases hijas ----------
 func _on_ready() -> void:
