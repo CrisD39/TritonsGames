@@ -2,27 +2,29 @@
 
 [ext_resource type="Script" uid="uid://c7dw4xrdyi5fw" path="res://missile.gd" id="1_jvt27"]
 [ext_resource type="Texture2D" uid="uid://ddupt4g0134ha" path="res://Particles/muzzle_04.png" id="1_nipnw"]
-[ext_resource type="Texture2D" uid="uid://bb8y83pfwuog5" path="res://Assets/Bullets/spaceRockets_004.png" id="2_lrcr2"]
 [ext_resource type="AudioStream" uid="uid://qaue6e2sab01" path="res://Sonidos/engine_takeoff.wav" id="3_8k8dm"]
+[ext_resource type="Texture2D" uid="uid://ckeplef152gjy" path="res://Assets/Bullets/side_winder.png" id="4_jvt27"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bqn2q"]
-radius = 6.0
+radius = 4.0
 height = 68.0
 
 [node name="missile" type="Area2D"]
 script = ExtResource("1_jvt27")
 
+[node name="SideWinder" type="Sprite2D" parent="."]
+position = Vector2(0, 2)
+scale = Vector2(2, 2)
+texture = ExtResource("4_jvt27")
+
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-position = Vector2(0, 55)
+position = Vector2(0, 37)
 amount = 10
 texture = ExtResource("1_nipnw")
 lifetime = 0.2
+local_coords = true
 scale_amount_min = 0.12
 scale_amount_max = 0.12
-
-[node name="SpaceRockets004" type="Sprite2D" parent="."]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_lrcr2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)

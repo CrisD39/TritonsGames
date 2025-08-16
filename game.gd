@@ -32,11 +32,9 @@ func invocar_enemigo(pos: Vector2):
 	instancia_enemigo.global_position = pos
 	#instancia_enemigo.target = $Player
 	$Enemigos.add_child(instancia_enemigo)
-	print("se creo enemigo")
 	
 func check_fin_ola() -> bool:
 	if($Enemigos.get_children().size() == 1):
-		print("check_fin_ola")
 		crear_nueva_ola()
 		$Timer.start()
 		return true
