@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://c8cd2rlci611j"]
 
-[ext_resource type="Script" uid="uid://5o602spqdsxi" path="res://enemy_plane_2.gd" id="1_g4gjh"]
+[ext_resource type="Script" path="res://enemy_plane_2.gd" id="1_g4gjh"]
 [ext_resource type="Shader" uid="uid://b14s8v358avk1" path="res://borrarFondoBlanco.gdshader" id="2_g4gjh"]
 [ext_resource type="Texture2D" uid="uid://wcwatxjkoa85" path="res://Assets/Aircraft Sprites/Multiple Views/AlliedFighters.PNG" id="3_3vnnh"]
 

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt4jk4cdvv1nw"]
+
+[ext_resource type="Script" uid="uid://biwnb1crqfna8" path="res://Scripts/background.gd" id="1_bwipx"]
+[ext_resource type="Texture2D" uid="uid://b0vyjpv4ych62" path="res://Assets/Background/water.png" id="2_b25i4"]
+
+[node name="background" type="ParallaxBackground"]
+script = ExtResource("1_bwipx")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(0, 640)
+
+[node name="sea" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(554, 564)
+texture = ExtResource("2_b25i4")
